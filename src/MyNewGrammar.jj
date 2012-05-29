@@ -1,308 +1,14 @@
-/**
+ /**
  * JavaCC template file created by SF JavaCC plugin 1.5.17+ wizard for JavaCC 1.5.0+
- */
-/*options
+ *//*options
 //{
 //  lookahead = 1;
-}*/
-PARSER_BEGIN(eg1)
-
-public class eg1
-{
-  public static void main(String args []) throws ParseException
-  {
-    eg1 parser = new eg1(System.in);
-    while (true)
-    {
-      try
-      {
-      	//eg1.Goal();
-        switch (eg1.Goal())
-        {
-          case 0 : 
-          System.out.println("OK.");
-          break;
-          case 1 : 
-          System.out.println("Goodbye.");
-          break;
-          default : 
-          break;
-        }
-      }
-      catch (Exception e)
-      {
-        System.out.println("NOK.");
-        System.out.println(e.getMessage());
-        eg1.ReInit(System.in);
-      }
-      catch (Error e)
-      {
-        System.out.println("Oops.");
-        System.out.println(e.getMessage());
-        break;
-      }
-    }
-  }
-}
-
-PARSER_END(eg1)
-
-SKIP :
-{
-  " "
-| "\r"
-| "\t"
-| "\n"
-}
-MORE : {
-
-"/*": IN_COMMENT }
-      
-
-// When any other character is seen in the IN_COMMENT state, skip it.
-
-< IN_COMMENT > MORE : {
-
-<  ~[] > }
-      
-
-// When a */ is seen in the IN_COMMENT state, skip it and switch back to the DEFAULT state
-
-< IN_COMMENT > SKIP : {
-
-"*/": DEFAULT }
-
-
-
-MORE : {
-"//": IN_SINGLE_LINE_COMMENT}
-
-< IN_SINGLE_LINE_COMMENT > SPECIAL_TOKEN : {
-
-< SINGLE_LINE_COMMENT: "\n"|"\r"|"\r\n" > : DEFAULT }
-      
-
-< IN_SINGLE_LINE_COMMENT > MORE : {
-
-<  ~[] > }
-
-
- 
-TOKEN : /* OPERATORS */
-{
-< NEW: "new" >
-  | < CLASS: "class" >
-  | < INT: "int" >
-  | < PUBLIC: "public" >
-  | < BOOLEAN: "boolean" >
-  | < STATIC: "static" >
-  | < IF: "if" >
-  | < VOID: "void" >
-  | < ELSE: "else" >
-  | < MAIN: "main" >
-  | < WHILE: "while" >
-  | < STRING: "String" >
-  | < PRINT: "System.out.println" >
-  | < EXTENDS: "extends" >
-  | < LENGTH: "length" >
-  | < RETURN: "return" >
-  | < TRUE: "true" >
-  | < THIS: "this" >
-  | < FALSE: "false" >
-  | < IDENTIFIER: ["a"-"z","A"-"Z"](["a"-"z","A"-"Z","0"-"9","_"] )*>
-  | < INTEGER : (["0"-"9"])+ >
-  | < COMMA: "," >
-  | < STAR: "*" >
-  | < LBRACE: "{" >
-  | < ASSIGN: "=" >
-  | < RBRACE: "}" >
-  | < AND: "&&" >
-  | < LPAREN: "(" >
-  | < LESS: "<" >
-  | < RPAREN: ")" >
-  | < PLUS: "+" >
-  | < LBRACKET: "[" >
-  | < MINUS: "-" >
-  | < RBRACKET: "]" >
-  | < PERIOD: "." >
-  | < NOT: "!" >
-  | < SEMICOLON: ";" >
-  
-
-}
-
-int Goal():
-{}
-{
-  try
-  {
-
-    
-    MainClass() ( ClassDeclaration())* <EOF>
-    {
-    	return 0;
-  	}
-  | <EOF>
-  	{
-		return 1;
-  	}
-
-    
-  }catch (ParseException e) {
-    	System.out.println(e.toString());
-    	Token t;
-    do {
-      t = getNextToken();
-    } while (t.kind != EOF);
-  }
-    
-}
-void MainClass():
-{}
-{
-	try
-	{
-  
-		<CLASS> Identifier() "{" <PUBLIC><STATIC><VOID><MAIN> "(""String" "[" "]" Identifier() ")" "{" Statement() "}" "}"
-
-	}catch (ParseException e) {
-    		System.out.println(e.toString());
-    		Token t;
-    		do {
-      			t = getNextToken();
-    		} while (t.kind != CLASS && t.kind != EOF);
-	}
-
-}
-
-void ClassDeclaration():
-{}
-{
-	try
-	{
-    
-    	<CLASS> Identifier() ( <EXTENDS> Identifier() )? "{"
-    	(VarDeclaration() )* (MethodDeclaration())* "}"
-  
-	}catch (ParseException e) {
-    		System.out.println(e.toString());
-    		Token t;
-    		do {
-      			t = getNextToken();
-    		} while (t.kind != RBRACE);
-	}
-  
-}
-
-void VarDeclaration():
-{}
-{
-  try
-  {
-    
-	Type() Identifier() ";"
-
-	}catch (ParseException e) {
-    	System.out.println(e.toString());
-    	Token t;
-    do {
-      t = getNextToken();
-    } while (t.kind != SEMICOLON);
-	}
-}
-
-void MethodDeclaration():
-{}
-{
-    <PUBLIC> Type() Identifier() "(" ( Type() Identifier() ( "," Type() Identifier() )* )? ")" "{" ( LOOKAHEAD(2)VarDeclaration() )* ( Statement() )* <RETURN> Expression() ";" "}"
-
-}
-
-void Type():
-{}
-{
-    <INT>  TypeLine()
-    | <BOOLEAN>
-    | Identifier()
-}
-
-void TypeLine():
-{}
-{
-    ("[" "]")?
-
-//|vazio
-}
-void Statement():
-{}
-{
-    "{" ( Statement() )* "}"
-    | <IF> "(" Expression() ")" Statement() <ELSE> Statement()
-    | <WHILE> "(" Expression() ")" Statement()
-    | "System.out.println" "(" Expression() ")" ";"
-    | Identifier() StatementLine()
-}
-
-void StatementLine():
-{}
-{
-    "=" Expression() ";"
-    | "[" Expression() "]" "=" Expression() ";"
-}
-void Expression():
-{}
-{
-    AExpression() (LOOKAHEAD(2)ExpressionLine())?
-
-}
-void ExpressionLine():
-{}
-{
-
- 
-    ( <AND> | <LESS> | < PLUS > | < MINUS > | < STAR > ) Expression()(LOOKAHEAD(2)ExpressionLine())?
-
-|  "[" Expression() "]" (LOOKAHEAD(2)ExpressionLine())?
-
-|  "." ExpressionLineTwo()
-
-
-//| vazio
-
-}
-void ExpressionLineTwo():
-{}
-{
-	"length" (LOOKAHEAD(2)ExpressionLine())?
-|   Identifier()"(" ( Expression() ( "," Expression() )* )?")" (LOOKAHEAD(2)ExpressionLine())?
-}
-
-void AExpression():
-{}
-{
-    <INTEGER>
-    | "true"
-    | "false"
-    | Identifier()
-    | "this"
-    | "new" NewLine()
-    | "!" Expression()
-    | "(" Expression() ")"
-}
-void NewLine():
-{}
-{
-
-<INT> "[" Expression() "]"
-
-| Identifier() "(" ")"
-
-
-}
-void Identifier():
-{}
-{
-
-<IDENTIFIER>
-}
-
+}*/PARSER_BEGIN(eg1)public class eg1{  public static void main(String args []) throws ParseException  {    eg1 parser = new eg1(System.in);    while (true)    {      try      {        //eg1.Goal();
+        if (eg1.Go() == null )        {          System.out.println("OK.");
+          break;        }        else        {                   	System.out.println("Goodbye.");
+        	break;
+       }      }      catch (Exception e)      {        System.out.println("NOK.");        System.out.println(e.getMessage());        eg1.ReInit(System.in);      }      catch (Error e)      {        System.out.println("Oops.");        System.out.println(e.getMessage());        break;      }    }  }}PARSER_END(eg1)SKIP :{  " "| "\r"| "\t"| "\n"}MORE :{  "/*" : IN_COMMENT}// When any other character is seen in the IN_COMMENT state, skip it.
+< IN_COMMENT >MORE :{  < ~[ ] >}// When a */ is seen in the IN_COMMENT state, skip it and switch back to the DEFAULT state
+< IN_COMMENT >SKIP :{  "*/" : DEFAULT}MORE :{  "//" : IN_SINGLE_LINE_COMMENT}< IN_SINGLE_LINE_COMMENT >SPECIAL_TOKEN :{  < SINGLE_LINE_COMMENT :    "\n"  | "\r"  | "\r\n" > : DEFAULT}< IN_SINGLE_LINE_COMMENT >MORE :{  < ~[ ] >}TOKEN : /* OPERATORS */{  < NEW : "new" >| < CLASS : "class" >| < INT : "int" >| < PUBLIC : "public" >| < BOOLEAN : "boolean" >| < STATIC : "static" >| < IF : "if" >| < VOID : "void" >| < ELSE : "else" >| < MAIN : "main" >| < WHILE : "while" >| < STRING : "String" >| < PRINT : "System.out.println" >| < EXTENDS : "extends" >| < LENGTH : "length" >| < RETURN : "return" >| < TRUE : "true" >| < THIS : "this" >| < FALSE : "false" >| < IDENTIFIER : [ "a"-"z", "A"-"Z" ] ([ "a"-"z", "A"-"Z", "0"-"9", "_" ])* >| < INTEGER : ([ "0"-"9" ])+ >| < COMMA : "," >| < STAR : "*" >| < LBRACE : "{" >| < ASSIGN : "=" >| < RBRACE : "}" >| < AND : "&&" >| < LPAREN : "(" >| < LESS : "<" >| < RPAREN : ")" >| < PLUS : "+" >| < LBRACKET : "[" >| < MINUS : "-" >| < RBRACKET : "]" >| < PERIOD : "." >| < NOT : "!" >| < SEMICOLON : ";" >}int Go() :{}{  try  {    MainClass() (ClassDeclaration()) * < EOF >    {      return 0;    }  | < EOF >    {      return 1;    }  }  catch (ParseException e)  {    System.out.println(e.toString());    Token t;    do    {      t = getNextToken();    }    while (t.kind != EOF);    return 1;  }}void MainClass() :{}{  try  {    < CLASS > Identifier() "{" < PUBLIC > < STATIC > < VOID > < MAIN > "(" "String" "[" "]" Identifier() ")" "{" Statement() "}" "}"  }  catch (ParseException e)  {    System.out.println(e.toString());    Token t;    do    {      t = getNextToken();    }    while (t.kind != RBRACE);  }}void ClassDeclaration() :{}{  try  {    < CLASS > Identifier() (< EXTENDS > Identifier()) ? "{"     (VarDeclaration()) * (MethodDeclaration()) * "}"  }  catch (ParseException e)  {    System.out.println(e.toString());    Token t;    do    {      t = getNextToken();    }    while (t.kind != RBRACE);  }}void VarDeclaration() :{}{  try  {    Type() Identifier() ";"  }  catch (ParseException e)  {    System.out.println(e.toString());    Token t;    do    {      t = getNextToken();    }    while (t.kind != SEMICOLON);  }}void MethodDeclaration() :{}{  try  {    < PUBLIC > Type() Identifier() "(" (Type() Identifier() ("," Type() Identifier()) *) ? ")" "{" (LOOKAHEAD(2)    VarDeclaration()) * (Statement()) * < RETURN > Expression() ";" "}"  }  catch (ParseException e)  {    System.out.println(e.toString());    Token t;    do    {      t = getNextToken();    }    while (t.kind != RBRACE);  }}void Type() :{}{  try  {    < INT > TypeLine()  | < BOOLEAN >  | Identifier()  }  catch (ParseException e)  {    System.out.println(e.toString());    Token t;    do    {      t = getNextToken();    }    while (t.kind != SEMICOLON);  }}void TypeLine() :{}{  ("[" "]")?  //|vazio
+}void Statement() :{}{  "{"  (    Statement()  )*  "}"| < IF > "(" Expression() ")" Statement() < ELSE > Statement()| < WHILE > "(" Expression() ")" Statement()| "System.out.println" "(" Expression() ")" ";"| Identifier() StatementLine()}void StatementLine() :{}{  try  {    "=" Expression() ";"  | "[" Expression() "]" "=" Expression() ";"  }  catch (ParseException e)  {    System.out.println(e.toString());    Token t;    do    {      t = getNextToken();    }    while (t.kind != SEMICOLON);  }}void Expression() :{}{  AExpression()  (    LOOKAHEAD(2)    ExpressionLine()  )?}void ExpressionLine() :{}{  (    < AND >  | < LESS >  | < PLUS >  | < MINUS >  | < STAR >  )  Expression()  (    LOOKAHEAD(2)    ExpressionLine()  )?| "[" Expression() "]"  (    LOOKAHEAD(2)    ExpressionLine()  )?| "." ExpressionLineTwo()  //| vazio
+}void ExpressionLineTwo() :{}{  "length"  (    LOOKAHEAD(2)    ExpressionLine()  )?| Identifier() "("  (    Expression()    (      "," Expression()    )*  )?  ")"  (    LOOKAHEAD(2)    ExpressionLine()  )?}void AExpression() :{}{  < INTEGER >| "true"| "false"| Identifier()| "this"| "new" NewLine()| "!" Expression()| "(" Expression() ")"}void NewLine() :{}{  < INT > "[" Expression() "]"| Identifier() "(" ")"}void Identifier() :{}{  < IDENTIFIER >}
