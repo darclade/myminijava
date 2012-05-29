@@ -134,14 +134,17 @@ TOKEN : /* OPERATORS */
 int Goal():
 {}
 {
-  try  {
+  try
+  {
+
     
     MainClass() ( ClassDeclaration())* <EOF>
     {
     	return 0;
   	}
   | <EOF>
-  	{		return 1;
+  	{
+		return 1;
   	}
 
     
@@ -157,7 +160,9 @@ int Goal():
 void MainClass():
 {}
 {
-	try	{  
+	try
+	{
+  
 		<CLASS> Identifier() "{" <PUBLIC><STATIC><VOID><MAIN> "(""String" "[" "]" Identifier() ")" "{" Statement() "}" "}"
 
 	}catch (ParseException e) {
@@ -173,7 +178,9 @@ void MainClass():
 void ClassDeclaration():
 {}
 {
-	try	{    
+	try
+	{
+    
     	<CLASS> Identifier() ( <EXTENDS> Identifier() )? "{"
     	(VarDeclaration() )* (MethodDeclaration())* "}"
   
@@ -190,7 +197,9 @@ void ClassDeclaration():
 void VarDeclaration():
 {}
 {
-  try  {    
+  try
+  {
+    
 	Type() Identifier() ";"
 
 	}catch (ParseException e) {
