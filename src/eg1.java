@@ -8,17 +8,17 @@ public class eg1 implements eg1Constants {
       try
       {
         //eg1.Goal();
-        switch (eg1.Goal())
+        if (eg1.Go() == null )
         {
-          case 0 :
           System.out.println("OK.");
           break;
-          case 1 :
-          System.out.println("Goodbye.");
-          break;
-          default :
-          break;
         }
+        else
+        {
+
+                System.out.println("Goodbye.");
+                break;
+       }
       }
       catch (Exception e)
       {
@@ -35,7 +35,7 @@ public class eg1 implements eg1Constants {
     }
   }
 
-  static final public int Goal() throws ParseException {
+  static final public int Go() throws ParseException {
     try {
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
       case CLASS:
@@ -53,11 +53,11 @@ public class eg1 implements eg1Constants {
           ClassDeclaration();
         }
         jj_consume_token(0);
-        {if (true) return 0;}
+      {if (true) return 0;}
         break;
       case 0:
         jj_consume_token(0);
-                {if (true) return 1;}
+      {if (true) return 1;}
         break;
       default:
         jj_la1[1] = jj_gen;
@@ -65,11 +65,14 @@ public class eg1 implements eg1Constants {
         throw new ParseException();
       }
     } catch (ParseException e) {
-        System.out.println(e.toString());
-        Token t;
-    do {
+    System.out.println(e.toString());
+    Token t;
+    do
+    {
       t = getNextToken();
-    } while (t.kind != EOF);
+    }
+    while (t.kind != EOF);
+    {if (true) return 1;}
     }
     throw new Error("Missing return statement in function");
   }
@@ -94,11 +97,13 @@ public class eg1 implements eg1Constants {
       jj_consume_token(RBRACE);
       jj_consume_token(RBRACE);
     } catch (ParseException e) {
-                System.out.println(e.toString());
-                Token t;
-                do {
-                        t = getNextToken();
-                } while (t.kind != CLASS && t.kind != EOF);
+    System.out.println(e.toString());
+    Token t;
+    do
+    {
+      t = getNextToken();
+    }
+    while (t.kind != RBRACE);
     }
   }
 
@@ -144,11 +149,13 @@ public class eg1 implements eg1Constants {
       }
       jj_consume_token(RBRACE);
     } catch (ParseException e) {
-                System.out.println(e.toString());
-                Token t;
-                do {
-                        t = getNextToken();
-                } while (t.kind != RBRACE);
+    System.out.println(e.toString());
+    Token t;
+    do
+    {
+      t = getNextToken();
+    }
+    while (t.kind != RBRACE);
     }
   }
 
@@ -158,93 +165,115 @@ public class eg1 implements eg1Constants {
       Identifier();
       jj_consume_token(SEMICOLON);
     } catch (ParseException e) {
-        System.out.println(e.toString());
-        Token t;
-    do {
+    System.out.println(e.toString());
+    Token t;
+    do
+    {
       t = getNextToken();
-    } while (t.kind != SEMICOLON);
+    }
+    while (t.kind != SEMICOLON);
     }
   }
 
   static final public void MethodDeclaration() throws ParseException {
-    jj_consume_token(PUBLIC);
-    Type();
-    Identifier();
-    jj_consume_token(LPAREN);
-    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-    case INT:
-    case BOOLEAN:
-    case IDENTIFIER:
+    try {
+      jj_consume_token(PUBLIC);
       Type();
       Identifier();
-      label_4:
+      jj_consume_token(LPAREN);
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case INT:
+      case BOOLEAN:
+      case IDENTIFIER:
+        Type();
+        Identifier();
+        label_4:
+        while (true) {
+          switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+          case COMMA:
+            ;
+            break;
+          default:
+            jj_la1[5] = jj_gen;
+            break label_4;
+          }
+          jj_consume_token(COMMA);
+          Type();
+          Identifier();
+        }
+        break;
+      default:
+        jj_la1[6] = jj_gen;
+        ;
+      }
+      jj_consume_token(RPAREN);
+      jj_consume_token(LBRACE);
+      label_5:
+      while (true) {
+        if (jj_2_1(2)) {
+          ;
+        } else {
+          break label_5;
+        }
+        VarDeclaration();
+      }
+      label_6:
       while (true) {
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case COMMA:
+        case IF:
+        case WHILE:
+        case PRINT:
+        case IDENTIFIER:
+        case LBRACE:
           ;
           break;
         default:
-          jj_la1[5] = jj_gen;
-          break label_4;
+          jj_la1[7] = jj_gen;
+          break label_6;
         }
-        jj_consume_token(COMMA);
-        Type();
-        Identifier();
+        Statement();
       }
-      break;
-    default:
-      jj_la1[6] = jj_gen;
-      ;
+      jj_consume_token(RETURN);
+      Expression();
+      jj_consume_token(SEMICOLON);
+      jj_consume_token(RBRACE);
+    } catch (ParseException e) {
+    System.out.println(e.toString());
+    Token t;
+    do
+    {
+      t = getNextToken();
     }
-    jj_consume_token(RPAREN);
-    jj_consume_token(LBRACE);
-    label_5:
-    while (true) {
-      if (jj_2_1(2)) {
-        ;
-      } else {
-        break label_5;
-      }
-      VarDeclaration();
+    while (t.kind != RBRACE);
     }
-    label_6:
-    while (true) {
-      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-      case IF:
-      case WHILE:
-      case PRINT:
-      case IDENTIFIER:
-      case LBRACE:
-        ;
-        break;
-      default:
-        jj_la1[7] = jj_gen;
-        break label_6;
-      }
-      Statement();
-    }
-    jj_consume_token(RETURN);
-    Expression();
-    jj_consume_token(SEMICOLON);
-    jj_consume_token(RBRACE);
   }
 
   static final public void Type() throws ParseException {
-    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-    case INT:
-      jj_consume_token(INT);
-      TypeLine();
-      break;
-    case BOOLEAN:
-      jj_consume_token(BOOLEAN);
-      break;
-    case IDENTIFIER:
-      Identifier();
-      break;
-    default:
-      jj_la1[8] = jj_gen;
-      jj_consume_token(-1);
-      throw new ParseException();
+    try {
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case INT:
+        jj_consume_token(INT);
+        TypeLine();
+        break;
+      case BOOLEAN:
+        jj_consume_token(BOOLEAN);
+        break;
+      case IDENTIFIER:
+        Identifier();
+        break;
+      default:
+        jj_la1[8] = jj_gen;
+        jj_consume_token(-1);
+        throw new ParseException();
+      }
+    } catch (ParseException e) {
+    System.out.println(e.toString());
+    Token t;
+    do
+    {
+      t = getNextToken();
+    }
+    while (t.kind != SEMICOLON);
     }
   }
 
@@ -317,24 +346,34 @@ public class eg1 implements eg1Constants {
   }
 
   static final public void StatementLine() throws ParseException {
-    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-    case ASSIGN:
-      jj_consume_token(ASSIGN);
-      Expression();
-      jj_consume_token(SEMICOLON);
-      break;
-    case LBRACKET:
-      jj_consume_token(LBRACKET);
-      Expression();
-      jj_consume_token(RBRACKET);
-      jj_consume_token(ASSIGN);
-      Expression();
-      jj_consume_token(SEMICOLON);
-      break;
-    default:
-      jj_la1[12] = jj_gen;
-      jj_consume_token(-1);
-      throw new ParseException();
+    try {
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case ASSIGN:
+        jj_consume_token(ASSIGN);
+        Expression();
+        jj_consume_token(SEMICOLON);
+        break;
+      case LBRACKET:
+        jj_consume_token(LBRACKET);
+        Expression();
+        jj_consume_token(RBRACKET);
+        jj_consume_token(ASSIGN);
+        Expression();
+        jj_consume_token(SEMICOLON);
+        break;
+      default:
+        jj_la1[12] = jj_gen;
+        jj_consume_token(-1);
+        throw new ParseException();
+      }
+    } catch (ParseException e) {
+    System.out.println(e.toString());
+    Token t;
+    do
+    {
+      t = getNextToken();
+    }
+    while (t.kind != SEMICOLON);
     }
   }
 
@@ -561,44 +600,23 @@ public class eg1 implements eg1Constants {
     finally { jj_save(5, xla); }
   }
 
-  static private boolean jj_3R_11() {
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_15()) {
-    jj_scanpos = xsp;
-    if (jj_scan_token(15)) {
-    jj_scanpos = xsp;
-    if (jj_scan_token(30)) return true;
-    }
-    }
-    return false;
-  }
-
-  static private boolean jj_3R_15() {
-    if (jj_scan_token(INT)) return true;
-    if (jj_3R_18()) return true;
-    return false;
-  }
-
-  static private boolean jj_3_2() {
-    if (jj_3R_10()) return true;
-    return false;
-  }
-
   static private boolean jj_3_1() {
     if (jj_3R_9()) return true;
     return false;
   }
 
-  static private boolean jj_3R_14() {
-    if (jj_scan_token(PERIOD)) return true;
-    if (jj_3R_17()) return true;
+  static private boolean jj_3R_25() {
+    if (jj_scan_token(LPAREN)) return true;
     return false;
   }
 
-  static private boolean jj_3R_13() {
-    if (jj_scan_token(LBRACKET)) return true;
-    if (jj_3R_16()) return true;
+  static private boolean jj_3R_24() {
+    if (jj_scan_token(NOT)) return true;
+    return false;
+  }
+
+  static private boolean jj_3R_23() {
+    if (jj_scan_token(NEW)) return true;
     return false;
   }
 
@@ -635,47 +653,6 @@ public class eg1 implements eg1Constants {
     return false;
   }
 
-  static private boolean jj_3R_16() {
-    if (jj_3R_19()) return true;
-    return false;
-  }
-
-  static private boolean jj_3R_25() {
-    if (jj_scan_token(LPAREN)) return true;
-    return false;
-  }
-
-  static private boolean jj_3R_9() {
-    if (jj_3R_11()) return true;
-    if (jj_scan_token(30)) return true;
-    return false;
-  }
-
-  static private boolean jj_3R_24() {
-    if (jj_scan_token(NOT)) return true;
-    return false;
-  }
-
-  static private boolean jj_3R_23() {
-    if (jj_scan_token(NEW)) return true;
-    return false;
-  }
-
-  static private boolean jj_3_5() {
-    if (jj_3R_10()) return true;
-    return false;
-  }
-
-  static private boolean jj_3_6() {
-    if (jj_3R_10()) return true;
-    return false;
-  }
-
-  static private boolean jj_3_4() {
-    if (jj_3R_10()) return true;
-    return false;
-  }
-
   static private boolean jj_3R_19() {
     Token xsp;
     xsp = jj_scanpos;
@@ -704,13 +681,52 @@ public class eg1 implements eg1Constants {
     return false;
   }
 
-  static private boolean jj_3_3() {
+  static private boolean jj_3R_22() {
+    if (jj_scan_token(LBRACKET)) return true;
+    return false;
+  }
+
+  static private boolean jj_3R_18() {
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_22()) jj_scanpos = xsp;
+    return false;
+  }
+
+  static private boolean jj_3_2() {
     if (jj_3R_10()) return true;
     return false;
   }
 
-  static private boolean jj_3R_22() {
-    if (jj_scan_token(LBRACKET)) return true;
+  static private boolean jj_3_6() {
+    if (jj_3R_10()) return true;
+    return false;
+  }
+
+  static private boolean jj_3R_16() {
+    if (jj_3R_19()) return true;
+    return false;
+  }
+
+  static private boolean jj_3R_9() {
+    if (jj_3R_11()) return true;
+    if (jj_scan_token(30)) return true;
+    return false;
+  }
+
+  static private boolean jj_3R_21() {
+    if (jj_scan_token(30)) return true;
+    return false;
+  }
+
+  static private boolean jj_3_5() {
+    if (jj_3R_10()) return true;
+    return false;
+  }
+
+  static private boolean jj_3R_15() {
+    if (jj_scan_token(INT)) return true;
+    if (jj_3R_18()) return true;
     return false;
   }
 
@@ -729,15 +745,38 @@ public class eg1 implements eg1Constants {
     return false;
   }
 
-  static private boolean jj_3R_18() {
+  static private boolean jj_3R_11() {
     Token xsp;
     xsp = jj_scanpos;
-    if (jj_3R_22()) jj_scanpos = xsp;
+    if (jj_3R_15()) {
+    jj_scanpos = xsp;
+    if (jj_scan_token(15)) {
+    jj_scanpos = xsp;
+    if (jj_scan_token(30)) return true;
+    }
+    }
     return false;
   }
 
-  static private boolean jj_3R_21() {
-    if (jj_scan_token(30)) return true;
+  static private boolean jj_3R_14() {
+    if (jj_scan_token(PERIOD)) return true;
+    if (jj_3R_17()) return true;
+    return false;
+  }
+
+  static private boolean jj_3_4() {
+    if (jj_3R_10()) return true;
+    return false;
+  }
+
+  static private boolean jj_3R_13() {
+    if (jj_scan_token(LBRACKET)) return true;
+    if (jj_3R_16()) return true;
+    return false;
+  }
+
+  static private boolean jj_3_3() {
+    if (jj_3R_10()) return true;
     return false;
   }
 
