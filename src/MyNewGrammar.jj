@@ -3,7 +3,24 @@
  *//*options
 //{
 //  lookahead = 1;
-}*/PARSER_BEGIN(eg1)public class eg1{  public static void main(String args []) throws ParseException  {    eg1 parser = new eg1(System.in);    while (true)    {      try      {        //eg1.Goal();
+}*/PARSER_BEGIN(eg1)
+import java.io.*;
+import java.lang.*;
+import java.nio.*;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;public class eg1{  public static void main(String args []) throws ParseException  {
+    BufferedReader in;
+    FileReader reader;    //eg1 parser = new eg1(System.in);	try {
+      reader = new FileReader(args[0]);  
+      InputStream is = new BufferedInputStream(new FileInputStream(args[0]));
+      parser = new eg1(is);
+    }
+    catch (IOException e) {
+		System.out.println(e.getMenssage());
+    } 
+
+
+    while (true)    {      try      {        //eg1.Goal();
         if (eg1.Go() == null )        {          System.out.println("OK.");
           break;        }        else        {                   	System.out.println("Goodbye.");
         	break;
