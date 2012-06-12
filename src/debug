@@ -1,0 +1,403 @@
+Call:   Go
+  Call:   MainClass
+    Consumed token: <"class" at line 1 column 1>
+    Call:   Identifier
+      Consumed token: <<IDENTIFIER>: "Factorial" at line 1 column 7>
+    Return: Identifier
+    Consumed token: <"{" at line 1 column 16>
+    Consumed token: <"public" at line 2 column 5>
+    Consumed token: <"static" at line 2 column 12>
+    Consumed token: <"void" at line 2 column 19>
+    Consumed token: <"main" at line 2 column 24>
+    Consumed token: <"(" at line 2 column 28>
+    Consumed token: <"String" at line 2 column 29>
+    Consumed token: <"[" at line 2 column 35>
+    Consumed token: <"]" at line 2 column 36>
+    Call:   Identifier
+      Consumed token: <<IDENTIFIER>: "a" at line 2 column 38>
+    Return: Identifier
+    Consumed token: <")" at line 2 column 39>
+    Consumed token: <"{" at line 2 column 40>
+    Call:   Statement
+      Consumed token: <"System.out.println" at line 3 column 9>
+      Consumed token: <"(" at line 3 column 27>
+      Call:   Expression
+        Call:   AExpression
+          Consumed token: <"new" at line 3 column 28>
+          Call:   NewLine
+            Call:   Identifier
+              Consumed token: <<IDENTIFIER>: "Fac" at line 3 column 32>
+            Return: Identifier
+            Consumed token: <"(" at line 3 column 35>
+            Consumed token: <")" at line 3 column 36>
+          Return: NewLine
+        Return: AExpression
+        Call:   ExpressionLine(LOOKING AHEAD...)
+          Visited token: <"." at line 3 column 37>; Expected token: <"&&">
+          Visited token: <"." at line 3 column 37>; Expected token: <"<">
+          Visited token: <"." at line 3 column 37>; Expected token: <"+">
+          Visited token: <"." at line 3 column 37>; Expected token: <"-">
+          Visited token: <"." at line 3 column 37>; Expected token: <"*">
+          Visited token: <"." at line 3 column 37>; Expected token: <"[">
+          Visited token: <"." at line 3 column 37>; Expected token: <".">
+          Call:   ExpressionLineTwo(LOOKING AHEAD...)
+            Visited token: <<IDENTIFIER>: "ComputeFac" at line 3 column 38>; Expected token: <"length">
+            Call:   Identifier(LOOKING AHEAD...)
+              Visited token: <<IDENTIFIER>: "ComputeFac" at line 3 column 38>; Expected token: <<IDENTIFIER>>
+              Call:   ExpressionLine
+                Consumed token: <"." at line 3 column 37>
+                Call:   ExpressionLineTwo
+                  Call:   Identifier
+                    Consumed token: <<IDENTIFIER>: "ComputeFac" at line 3 column 38>
+                  Return: Identifier
+                  Consumed token: <"(" at line 3 column 48>
+                  Call:   Expression
+                    Call:   AExpression
+                      Consumed token: <<INTEGER>: "10" at line 3 column 49>
+                    Return: AExpression
+                    Call:   ExpressionLine(LOOKING AHEAD...)
+                      Visited token: <")" at line 3 column 51>; Expected token: <"&&">
+                      Visited token: <")" at line 3 column 51>; Expected token: <"<">
+                      Visited token: <")" at line 3 column 51>; Expected token: <"+">
+                      Visited token: <")" at line 3 column 51>; Expected token: <"-">
+                      Visited token: <")" at line 3 column 51>; Expected token: <"*">
+                      Visited token: <")" at line 3 column 51>; Expected token: <"[">
+                      Visited token: <")" at line 3 column 51>; Expected token: <".">
+                    Return: ExpressionLine(LOOKAHEAD FAILED)
+                  Return: Expression
+                  Consumed token: <")" at line 3 column 51>
+                  Call:   ExpressionLine(LOOKING AHEAD...)
+                    Visited token: <")" at line 3 column 52>; Expected token: <"&&">
+                    Visited token: <")" at line 3 column 52>; Expected token: <"<">
+                    Visited token: <")" at line 3 column 52>; Expected token: <"+">
+                    Visited token: <")" at line 3 column 52>; Expected token: <"-">
+                    Visited token: <")" at line 3 column 52>; Expected token: <"*">
+                    Visited token: <")" at line 3 column 52>; Expected token: <"[">
+                    Visited token: <")" at line 3 column 52>; Expected token: <".">
+                  Return: ExpressionLine(LOOKAHEAD FAILED)
+                Return: ExpressionLineTwo
+              Return: ExpressionLine
+            Return: Expression
+            Consumed token: <")" at line 3 column 52>
+            Consumed token: <";" at line 3 column 53>
+          Return: Statement
+          Consumed token: <"}" at line 4 column 5>
+          Consumed token: <"}" at line 5 column 1>
+        Return: MainClass
+        Call:   ClassDeclaration
+          Consumed token: <"class" at line 7 column 1>
+          Call:   Identifier
+            Consumed token: <<IDENTIFIER>: "Fac" at line 7 column 7>
+          Return: Identifier
+          Consumed token: <"{" at line 7 column 11>
+          Call:   MethodDeclaration
+            Consumed token: <"public" at line 9 column 5>
+            Call:   Type
+              Consumed token: <"int" at line 9 column 12>
+              Call:   TypeLine
+              Return: TypeLine
+            Return: Type
+            Call:   Identifier
+              Consumed token: <<IDENTIFIER>: "ComputeFac" at line 9 column 16>
+            Return: Identifier
+            Consumed token: <"(" at line 9 column 26>
+            Call:   Type
+              Consumed token: <"int" at line 9 column 27>
+              Call:   TypeLine
+              Return: TypeLine
+            Return: Type
+            Call:   Identifier
+              Consumed token: <<IDENTIFIER>: "num" at line 9 column 31>
+            Return: Identifier
+            Consumed token: <")" at line 9 column 34>
+            Consumed token: <"{" at line 9 column 35>
+            Call:   VarDeclaration(LOOKING AHEAD...)
+              Call:   Type(LOOKING AHEAD...)
+                Visited token: <"int" at line 11 column 9>; Expected token: <"int">
+                Call:   TypeLine(LOOKING AHEAD...)
+                  Visited token: <<IDENTIFIER>: "num_aux" at line 11 column 13>; Expected token: <"[">
+                Return: TypeLine(LOOKAHEAD SUCCEEDED)
+              Return: Type(LOOKAHEAD SUCCEEDED)
+              Call:   Identifier(LOOKING AHEAD...)
+                Visited token: <<IDENTIFIER>: "num_aux" at line 11 column 13>; Expected token: <<IDENTIFIER>>
+                Call:   VarDeclaration
+                  Call:   Type
+                    Consumed token: <"int" at line 11 column 9>
+                    Call:   TypeLine
+                    Return: TypeLine
+                  Return: Type
+                  Call:   Identifier
+                    Consumed token: <<IDENTIFIER>: "num_aux" at line 11 column 13>
+                  Return: Identifier
+                  Consumed token: <";" at line 11 column 21>
+                Return: VarDeclaration
+                Call:   VarDeclaration(LOOKING AHEAD...)
+                  Call:   Type(LOOKING AHEAD...)
+                    Visited token: <"if" at line 12 column 9>; Expected token: <"int">
+                    Visited token: <"if" at line 12 column 9>; Expected token: <"boolean">
+                    Call:   Identifier(LOOKING AHEAD...)
+                      Visited token: <"if" at line 12 column 9>; Expected token: <<IDENTIFIER>>
+                    Return: Identifier(LOOKAHEAD FAILED)
+                  Return: Type(LOOKAHEAD FAILED)
+                Return: VarDeclaration(LOOKAHEAD FAILED)
+                Call:   Statement
+                  Consumed token: <"if" at line 12 column 9>
+                  Consumed token: <"(" at line 12 column 12>
+                  Call:   Expression
+                    Call:   AExpression
+                      Call:   Identifier
+                        Consumed token: <<IDENTIFIER>: "num" at line 12 column 13>
+                      Return: Identifier
+                    Return: AExpression
+                    Call:   ExpressionLine(LOOKING AHEAD...)
+                      Visited token: <"<" at line 12 column 17>; Expected token: <"&&">
+                      Visited token: <"<" at line 12 column 17>; Expected token: <"<">
+                      Call:   Expression(LOOKING AHEAD...)
+                        Call:   AExpression(LOOKING AHEAD...)
+                          Visited token: <<INTEGER>: "1" at line 12 column 19>; Expected token: <<INTEGER>>
+                          Call:   ExpressionLine
+                            Consumed token: <"<" at line 12 column 17>
+                            Call:   Expression
+                              Call:   AExpression
+                                Consumed token: <<INTEGER>: "1" at line 12 column 19>
+                              Return: AExpression
+                              Call:   ExpressionLine(LOOKING AHEAD...)
+                                Visited token: <")" at line 12 column 20>; Expected token: <"&&">
+                                Visited token: <")" at line 12 column 20>; Expected token: <"<">
+                                Visited token: <")" at line 12 column 20>; Expected token: <"+">
+                                Visited token: <")" at line 12 column 20>; Expected token: <"-">
+                                Visited token: <")" at line 12 column 20>; Expected token: <"*">
+                                Visited token: <")" at line 12 column 20>; Expected token: <"[">
+                                Visited token: <")" at line 12 column 20>; Expected token: <".">
+                              Return: ExpressionLine(LOOKAHEAD FAILED)
+                            Return: Expression
+                            Call:   ExpressionLine(LOOKING AHEAD...)
+                              Visited token: <")" at line 12 column 20>; Expected token: <"&&">
+                              Visited token: <")" at line 12 column 20>; Expected token: <"<">
+                              Visited token: <")" at line 12 column 20>; Expected token: <"+">
+                              Visited token: <")" at line 12 column 20>; Expected token: <"-">
+                              Visited token: <")" at line 12 column 20>; Expected token: <"*">
+                              Visited token: <")" at line 12 column 20>; Expected token: <"[">
+                              Visited token: <")" at line 12 column 20>; Expected token: <".">
+                            Return: ExpressionLine(LOOKAHEAD FAILED)
+                          Return: ExpressionLine
+                        Return: Expression
+                        Consumed token: <")" at line 12 column 20>
+                        Call:   Statement
+                          Call:   Identifier
+                            Consumed token: <<IDENTIFIER>: "num_aux" at line 13 column 13>
+                          Return: Identifier
+                          Call:   StatementLine
+                            Consumed token: <"=" at line 13 column 21>
+                            Call:   Expression
+                              Call:   AExpression
+                                Consumed token: <<INTEGER>: "1" at line 13 column 23>
+                              Return: AExpression
+                              Call:   ExpressionLine(LOOKING AHEAD...)
+                                Visited token: <"+" at line 13 column 24>; Expected token: <"&&">
+                                Visited token: <"+" at line 13 column 24>; Expected token: <"<">
+                                Visited token: <"+" at line 13 column 24>; Expected token: <"+">
+                                Call:   Expression(LOOKING AHEAD...)
+                                  Call:   AExpression(LOOKING AHEAD...)
+                                    Visited token: <<IDENTIFIER>: "a" at line 13 column 25>; Expected token: <<INTEGER>>
+                                    Visited token: <<IDENTIFIER>: "a" at line 13 column 25>; Expected token: <"true">
+                                    Visited token: <<IDENTIFIER>: "a" at line 13 column 25>; Expected token: <"false">
+                                    Call:   Identifier(LOOKING AHEAD...)
+                                      Visited token: <<IDENTIFIER>: "a" at line 13 column 25>; Expected token: <<IDENTIFIER>>
+                                      Call:   ExpressionLine
+                                        Consumed token: <"+" at line 13 column 24>
+                                        Call:   Expression
+                                          Call:   AExpression
+                                            Call:   Identifier
+                                              Consumed token: <<IDENTIFIER>: "a" at line 13 column 25>
+                                            Return: Identifier
+                                          Return: AExpression
+                                          Call:   ExpressionLine(LOOKING AHEAD...)
+                                            Visited token: <";" at line 13 column 27>; Expected token: <"&&">
+                                            Visited token: <";" at line 13 column 27>; Expected token: <"<">
+                                            Visited token: <";" at line 13 column 27>; Expected token: <"+">
+                                            Visited token: <";" at line 13 column 27>; Expected token: <"-">
+                                            Visited token: <";" at line 13 column 27>; Expected token: <"*">
+                                            Visited token: <";" at line 13 column 27>; Expected token: <"[">
+                                            Visited token: <";" at line 13 column 27>; Expected token: <".">
+                                          Return: ExpressionLine(LOOKAHEAD FAILED)
+                                        Return: Expression
+                                        Call:   ExpressionLine(LOOKING AHEAD...)
+                                          Visited token: <";" at line 13 column 27>; Expected token: <"&&">
+                                          Visited token: <";" at line 13 column 27>; Expected token: <"<">
+                                          Visited token: <";" at line 13 column 27>; Expected token: <"+">
+                                          Visited token: <";" at line 13 column 27>; Expected token: <"-">
+                                          Visited token: <";" at line 13 column 27>; Expected token: <"*">
+                                          Visited token: <";" at line 13 column 27>; Expected token: <"[">
+                                          Visited token: <";" at line 13 column 27>; Expected token: <".">
+                                        Return: ExpressionLine(LOOKAHEAD FAILED)
+                                      Return: ExpressionLine
+                                    Return: Expression
+                                    Consumed token: <";" at line 13 column 27>
+                                  Return: StatementLine
+                                Return: Statement
+                                Consumed token: <"else" at line 14 column 9>
+                                Call:   Statement
+                                  Call:   Identifier
+                                    Consumed token: <<IDENTIFIER>: "num_aux" at line 15 column 13>
+                                  Return: Identifier
+                                  Call:   StatementLine
+                                    Consumed token: <"=" at line 15 column 21>
+                                    Call:   Expression
+                                      Call:   AExpression
+                                        Call:   Identifier
+                                          Consumed token: <<IDENTIFIER>: "num" at line 15 column 23>
+                                        Return: Identifier
+                                      Return: AExpression
+                                      Call:   ExpressionLine(LOOKING AHEAD...)
+                                        Visited token: <"*" at line 15 column 27>; Expected token: <"&&">
+                                        Visited token: <"*" at line 15 column 27>; Expected token: <"<">
+                                        Visited token: <"*" at line 15 column 27>; Expected token: <"+">
+                                        Visited token: <"*" at line 15 column 27>; Expected token: <"-">
+                                        Visited token: <"*" at line 15 column 27>; Expected token: <"*">
+                                        Call:   Expression(LOOKING AHEAD...)
+                                          Call:   AExpression(LOOKING AHEAD...)
+                                            Visited token: <"(" at line 15 column 29>; Expected token: <<INTEGER>>
+                                            Visited token: <"(" at line 15 column 29>; Expected token: <"true">
+                                            Visited token: <"(" at line 15 column 29>; Expected token: <"false">
+                                            Call:   Identifier(LOOKING AHEAD...)
+                                              Visited token: <"(" at line 15 column 29>; Expected token: <<IDENTIFIER>>
+                                            Return: Identifier(LOOKAHEAD FAILED)
+                                            Visited token: <"(" at line 15 column 29>; Expected token: <"this">
+                                            Visited token: <"(" at line 15 column 29>; Expected token: <"new">
+                                            Visited token: <"(" at line 15 column 29>; Expected token: <"!">
+                                            Visited token: <"(" at line 15 column 29>; Expected token: <"(">
+                                            Call:   ExpressionLine
+                                              Consumed token: <"*" at line 15 column 27>
+                                              Call:   Expression
+                                                Call:   AExpression
+                                                  Consumed token: <"(" at line 15 column 29>
+                                                  Call:   Expression
+                                                    Call:   AExpression
+                                                      Consumed token: <"this" at line 15 column 30>
+                                                    Return: AExpression
+                                                    Call:   ExpressionLine(LOOKING AHEAD...)
+                                                      Visited token: <"." at line 15 column 34>; Expected token: <"&&">
+                                                      Visited token: <"." at line 15 column 34>; Expected token: <"<">
+                                                      Visited token: <"." at line 15 column 34>; Expected token: <"+">
+                                                      Visited token: <"." at line 15 column 34>; Expected token: <"-">
+                                                      Visited token: <"." at line 15 column 34>; Expected token: <"*">
+                                                      Visited token: <"." at line 15 column 34>; Expected token: <"[">
+                                                      Visited token: <"." at line 15 column 34>; Expected token: <".">
+                                                      Call:   ExpressionLineTwo(LOOKING AHEAD...)
+                                                        Visited token: <<IDENTIFIER>: "ComputeFac" at line 15 column 35>; Expected token: <"length">
+                                                        Call:   Identifier(LOOKING AHEAD...)
+                                                          Visited token: <<IDENTIFIER>: "ComputeFac" at line 15 column 35>; Expected token: <<IDENTIFIER>>
+                                                          Call:   ExpressionLine
+                                                            Consumed token: <"." at line 15 column 34>
+                                                            Call:   ExpressionLineTwo
+                                                              Call:   Identifier
+                                                                Consumed token: <<IDENTIFIER>: "ComputeFac" at line 15 column 35>
+                                                              Return: Identifier
+                                                              Consumed token: <"(" at line 15 column 45>
+                                                              Call:   Expression
+                                                                Call:   AExpression
+                                                                  Call:   Identifier
+                                                                    Consumed token: <<IDENTIFIER>: "num" at line 15 column 46>
+                                                                  Return: Identifier
+                                                                Return: AExpression
+                                                                Call:   ExpressionLine(LOOKING AHEAD...)
+                                                                  Visited token: <"-" at line 15 column 49>; Expected token: <"&&">
+                                                                  Visited token: <"-" at line 15 column 49>; Expected token: <"<">
+                                                                  Visited token: <"-" at line 15 column 49>; Expected token: <"+">
+                                                                  Visited token: <"-" at line 15 column 49>; Expected token: <"-">
+                                                                  Call:   Expression(LOOKING AHEAD...)
+                                                                    Call:   AExpression(LOOKING AHEAD...)
+                                                                      Visited token: <<INTEGER>: "1" at line 15 column 50>; Expected token: <<INTEGER>>
+                                                                      Call:   ExpressionLine
+                                                                        Consumed token: <"-" at line 15 column 49>
+                                                                        Call:   Expression
+                                                                          Call:   AExpression
+                                                                            Consumed token: <<INTEGER>: "1" at line 15 column 50>
+                                                                          Return: AExpression
+                                                                          Call:   ExpressionLine(LOOKING AHEAD...)
+                                                                            Visited token: <")" at line 15 column 51>; Expected token: <"&&">
+                                                                            Visited token: <")" at line 15 column 51>; Expected token: <"<">
+                                                                            Visited token: <")" at line 15 column 51>; Expected token: <"+">
+                                                                            Visited token: <")" at line 15 column 51>; Expected token: <"-">
+                                                                            Visited token: <")" at line 15 column 51>; Expected token: <"*">
+                                                                            Visited token: <")" at line 15 column 51>; Expected token: <"[">
+                                                                            Visited token: <")" at line 15 column 51>; Expected token: <".">
+                                                                          Return: ExpressionLine(LOOKAHEAD FAILED)
+                                                                        Return: Expression
+                                                                        Call:   ExpressionLine(LOOKING AHEAD...)
+                                                                          Visited token: <")" at line 15 column 51>; Expected token: <"&&">
+                                                                          Visited token: <")" at line 15 column 51>; Expected token: <"<">
+                                                                          Visited token: <")" at line 15 column 51>; Expected token: <"+">
+                                                                          Visited token: <")" at line 15 column 51>; Expected token: <"-">
+                                                                          Visited token: <")" at line 15 column 51>; Expected token: <"*">
+                                                                          Visited token: <")" at line 15 column 51>; Expected token: <"[">
+                                                                          Visited token: <")" at line 15 column 51>; Expected token: <".">
+                                                                        Return: ExpressionLine(LOOKAHEAD FAILED)
+                                                                      Return: ExpressionLine
+                                                                    Return: Expression
+                                                                    Consumed token: <")" at line 15 column 51>
+                                                                    Call:   ExpressionLine(LOOKING AHEAD...)
+                                                                      Visited token: <")" at line 15 column 52>; Expected token: <"&&">
+                                                                      Visited token: <")" at line 15 column 52>; Expected token: <"<">
+                                                                      Visited token: <")" at line 15 column 52>; Expected token: <"+">
+                                                                      Visited token: <")" at line 15 column 52>; Expected token: <"-">
+                                                                      Visited token: <")" at line 15 column 52>; Expected token: <"*">
+                                                                      Visited token: <")" at line 15 column 52>; Expected token: <"[">
+                                                                      Visited token: <")" at line 15 column 52>; Expected token: <".">
+                                                                    Return: ExpressionLine(LOOKAHEAD FAILED)
+                                                                  Return: ExpressionLineTwo
+                                                                Return: ExpressionLine
+                                                              Return: Expression
+                                                              Consumed token: <")" at line 15 column 52>
+                                                            Return: AExpression
+                                                            Call:   ExpressionLine(LOOKING AHEAD...)
+                                                              Visited token: <";" at line 15 column 54>; Expected token: <"&&">
+                                                              Visited token: <";" at line 15 column 54>; Expected token: <"<">
+                                                              Visited token: <";" at line 15 column 54>; Expected token: <"+">
+                                                              Visited token: <";" at line 15 column 54>; Expected token: <"-">
+                                                              Visited token: <";" at line 15 column 54>; Expected token: <"*">
+                                                              Visited token: <";" at line 15 column 54>; Expected token: <"[">
+                                                              Visited token: <";" at line 15 column 54>; Expected token: <".">
+                                                            Return: ExpressionLine(LOOKAHEAD FAILED)
+                                                          Return: Expression
+                                                          Call:   ExpressionLine(LOOKING AHEAD...)
+                                                            Visited token: <";" at line 15 column 54>; Expected token: <"&&">
+                                                            Visited token: <";" at line 15 column 54>; Expected token: <"<">
+                                                            Visited token: <";" at line 15 column 54>; Expected token: <"+">
+                                                            Visited token: <";" at line 15 column 54>; Expected token: <"-">
+                                                            Visited token: <";" at line 15 column 54>; Expected token: <"*">
+                                                            Visited token: <";" at line 15 column 54>; Expected token: <"[">
+                                                            Visited token: <";" at line 15 column 54>; Expected token: <".">
+                                                          Return: ExpressionLine(LOOKAHEAD FAILED)
+                                                        Return: ExpressionLine
+                                                      Return: Expression
+                                                      Consumed token: <";" at line 15 column 54>
+                                                    Return: StatementLine
+                                                  Return: Statement
+                                                Return: Statement
+                                                Consumed token: <"return" at line 16 column 9>
+                                                Call:   Expression
+                                                  Call:   AExpression
+                                                    Call:   Identifier
+                                                      Consumed token: <<IDENTIFIER>: "num_aux" at line 16 column 16>
+                                                    Return: Identifier
+                                                  Return: AExpression
+                                                  Call:   ExpressionLine(LOOKING AHEAD...)
+                                                    Visited token: <";" at line 16 column 24>; Expected token: <"&&">
+                                                    Visited token: <";" at line 16 column 24>; Expected token: <"<">
+                                                    Visited token: <";" at line 16 column 24>; Expected token: <"+">
+                                                    Visited token: <";" at line 16 column 24>; Expected token: <"-">
+                                                    Visited token: <";" at line 16 column 24>; Expected token: <"*">
+                                                    Visited token: <";" at line 16 column 24>; Expected token: <"[">
+                                                    Visited token: <";" at line 16 column 24>; Expected token: <".">
+                                                  Return: ExpressionLine(LOOKAHEAD FAILED)
+                                                Return: Expression
+                                                Consumed token: <";" at line 16 column 24>
+                                                Consumed token: <"}" at line 17 column 5>
+                                              Return: MethodDeclaration
+                                              Consumed token: <"}" at line 19 column 1>
+                                            Return: ClassDeclaration
+                                            Consumed token: <<EOF> at line 19 column 2>
+                                          Return: Go
+Goodbye.
